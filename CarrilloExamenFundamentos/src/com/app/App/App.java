@@ -66,10 +66,6 @@ public class App {
 		PRODUCTOS.add(p5);
 
 		Carrito.getInformeCarrito(app.getCarrito());
-		
-		
-		
-		
 
 	}
 
