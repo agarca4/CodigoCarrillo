@@ -12,13 +12,22 @@ public class App {
 
 	public static void main(String[] args) {
 
-		Contenido pelicula1 = new Contenido(new Identificador("051"), "El Irlandes");
-		Contenido cancion1 = new Contenido(new Identificador("001"), "Dilailah");
+		Contenido pelicula1 = new Contenido(new Identificador(51), "El Irlandes");
+		Contenido cancion1 = new Contenido(new Identificador(1), "Dilailah");
+		Contenido cancion2 = new Contenido(new Identificador(27), "Como el agua");
+		Contenido cancion3 = new Contenido(new Identificador(14), "Linda");
+		Contenido cancion4 = new Contenido(new Identificador(114), "si tu me dices ven");
+		Contenido pelicula2 = new Contenido(new Identificador(78), "Star wars");
 
 		ArrayList<Descargable> misDescargas = new ArrayList<Descargable>();
 		// Las meto desordenadas, para comprobar que me las ordena luego
 		misDescargas.add(new Ifichero(4589.54, pelicula1));
 		misDescargas.add(new Ifichero(8.7, cancion1));
+		misDescargas.add(new Ifichero(12.5, cancion2));
+		misDescargas.add(new Ifichero(5.3, cancion3));
+		misDescargas.add(new Ifichero(2.8, cancion4));
+		misDescargas.add(new Ifichero(3256.89, pelicula2));
+		
 
 		Conexion conexion = new Conexion(2.0);
 

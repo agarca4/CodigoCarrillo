@@ -25,7 +25,7 @@ public class Ifichero implements Descargable{
 	
 	@Override
 	public String toString() {
-		return "Fichero con tamaño: " + getTamano() + " Mg, " + getContenido();
+		return "Fichero con tamaño: " + getTamano() + " Mg, " + getContenido() + "\n";
 	}
 
 	

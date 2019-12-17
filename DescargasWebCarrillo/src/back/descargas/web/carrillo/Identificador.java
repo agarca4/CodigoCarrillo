@@ -2,21 +2,23 @@ package back.descargas.web.carrillo;
 
 public class Identificador {
 	
-	private String identificador;
+	private int identificador;
 
-	public String getIdentificador() {
+	public int getIdentificador() {
 		return identificador;
 	}
 
-	public Identificador(String identificador) {
+	public Identificador(int identificador) {
 		super();
 		this.identificador = identificador;
 	}
 
 	@Override
 	public String toString() {
-		return  getIdentificador();
+		return "Identificador: " + getIdentificador();
 	}
+
+	
 	
 	
 	
