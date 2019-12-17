@@ -26,9 +26,17 @@ public class App {
 
 	}
 
+	//OJO! el metodo sort, lo tienen la clase CollectionS cuando trabajamos con colecciones, y la clase Arrays, si vamos 
+	//a trabajar con arrays. Ese metodo sort va a tirar y utilizar el metodo comareTo o el compare, segun hayamos 
+	//implementado la Interfaz Comparable o Comparator. De hecho, el metodo sort esta sobrecargado y te permite 1 o 2
+	//argumentos. 1 si usas comparable (pasandole solo la lista que quieras ordenar, con respecto al criterio que 
+	//hayas establecido en el compareTo de Comparable),
+	//y 2 argumentos si vas a usar el comparator, puesto que uno será la propia lista, y el otro el objeto comparador que
+	//funcionará segun hayas implementado el metodo compare de la interfaz comarator
 	public static void ordenarLista(ArrayList<Descargable> miLista) {
 		// He implementado Comparable en Ifichero, con su metodo compareTo
 		Collections.sort(miLista);
+		
 	}
 
 	public static void descargar(ArrayList<Descargable> misDescargas, Conexion conexion) {

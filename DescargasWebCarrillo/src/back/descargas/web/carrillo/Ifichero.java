@@ -22,11 +22,7 @@ public class Ifichero implements Descargable{
 		return contenido;
 	}
 	
-	@Override
-	public int compareTo(Descargable arg0) {
-		return getContenido().getId().getIdentificador().compareTo(arg0.getContenido().getId().getIdentificador());
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Fichero con tamaño: " + getTamano() + " Mg, " + getContenido();
