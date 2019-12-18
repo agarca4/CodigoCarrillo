@@ -18,6 +18,11 @@ public class Identificador {
 		return "Identificador: " + getIdentificador();
 	}
 
+	public int compareTo(Identificador id) {
+		// TODO Auto-generated method stub
+		return this.getIdentificador() - id.getIdentificador();
+	}
+
 	
 	
 	

@@ -8,8 +8,9 @@ public interface Descargable extends Comparable<Descargable> {
 
 	@Override
 	public default int compareTo(Descargable arg0) {
+		
 
-		return this.getContenido().getId().getIdentificador() - arg0.getContenido().getId().getIdentificador();
+		return this.getContenido().getId().compareTo(arg0.getContenido().getId());
 
 	}
 
