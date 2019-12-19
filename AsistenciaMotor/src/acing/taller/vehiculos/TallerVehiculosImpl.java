@@ -3,10 +3,11 @@ package acing.taller.vehiculos;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import acing.comun.Averiable;
 import acing.comun.Taller;
 import acing.vehiculos.Vehiculo;
 
-public class TallerVehiculosImpl implements Taller<Vehiculo> {
+public class TallerVehiculosImpl implements Taller<Averiable<Vehiculo>> {
 
 	private Collection<Vehiculo> vehiculosIngresados;
 
@@ -19,26 +20,26 @@ public class TallerVehiculosImpl implements Taller<Vehiculo> {
 	}
 
 	@Override
-	public void ingresar(Vehiculo vehiculo) {
-		vehiculosIngresados.add(vehiculo);
+	public void ingresar(Averiable<Vehiculo> vehiculo) {
+		vehiculosIngresados.add((Vehiculo) vehiculo);
 
 	}
 
-
 	@Override
-	public void diagnosticar(Vehiculo vehiculo) {
-		if (vehiculo.getAverias() == null) {
+	public void diagnosticar(Averiable<Vehiculo> vehiculo) {
+		if (((Vehiculo) vehiculo).getAverias() == null) {
 			System.out.println(vehiculo + " no está averiado.\n");
 		} else {
-			System.err.println(vehiculo + " tiene las siguientes averias: \n" + vehiculo.getAverias() + "\n");
+			System.err.println(
+					vehiculo + " tiene las siguientes averias: \n" + ((Vehiculo) vehiculo).getAverias() + "\n");
 		}
 
 	}
 
 	@Override
-	public void reparar(Vehiculo vehiculo) {
-		if (vehiculo.getAverias() != null) {
-			vehiculo.setAverias(null);
+	public void reparar(Averiable<Vehiculo> vehiculo) {
+		if (((Vehiculo) vehiculo).getAverias() != null) {
+			((Vehiculo) vehiculo).setAverias(null);
 			System.out.println(vehiculo + " ha sido reparado.\n");
 		} else {
 			System.out.println(vehiculo + " no necesita ser reparado.\n");
@@ -47,7 +48,7 @@ public class TallerVehiculosImpl implements Taller<Vehiculo> {
 	}
 
 	@Override
-	public void egresar(Vehiculo vehiculo) {
+	public void egresar(Averiable<Vehiculo> vehiculo) {
 		if (getVehiculosIngresados().contains(vehiculo)) {
 			getVehiculosIngresados().remove(vehiculo);
 		}
@@ -56,9 +57,7 @@ public class TallerVehiculosImpl implements Taller<Vehiculo> {
 
 	@Override
 	public String toString() {
-		return "Los vehiculos ingresados en el taller son: \n" + getVehiculosIngresados() +"\n";
+		return "Los vehiculos ingresados en el taller son: \n" + getVehiculosIngresados() + "\n";
 	}
-
-
 
 }

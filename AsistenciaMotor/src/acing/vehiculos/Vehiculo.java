@@ -5,7 +5,7 @@ import java.util.Collection;
 import acing.comun.Averiable;
 import acing.taller.vehiculos.AveriaVehiculosImpl;
 
-public class Vehiculo implements Averiable<AveriaVehiculosImpl>{
+public class Vehiculo implements Averiable<Vehiculo>{
 
 	protected String modelo;
 	private String color;
@@ -46,7 +46,7 @@ public class Vehiculo implements Averiable<AveriaVehiculosImpl>{
 	}
 	
 	@Override
-	public void averiarse(Collection<AveriaVehiculosImpl> averias) {
+	public void averiarse() {
 		setAverias(averias);	
 	}
 

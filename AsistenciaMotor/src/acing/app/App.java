@@ -2,6 +2,8 @@ package acing.app;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
+import acing.comun.Averiable;
 import acing.taller.vehiculos.AveriaVehiculosImpl;
 import acing.taller.vehiculos.PresupuestoVehiculosImpl;
 import acing.taller.vehiculos.TallerVehiculosImpl;
@@ -13,9 +15,9 @@ public class App {
 
 	public static void main(String[] args) {
 		
-		Vehiculo v1 = new Vehiculo("audi", "blanco");
-		Vehiculo c1 = new Coche("seat", "azul", "7575ljk");
-		Vehiculo m1 = new Moto("yamaha", "roja");
+		Averiable<Vehiculo> v1 = new Vehiculo("audi", "blanco");
+		Averiable<Vehiculo> c1 = new Coche("seat", "azul", "7575ljk");
+		Averiable<Vehiculo> m1 = new Moto("yamaha", "roja");
 		
 		TallerVehiculosImpl taller = new TallerVehiculosImpl();
 		
@@ -26,7 +28,7 @@ public class App {
 		averias.add(av1);
 		averias.add(av2);
 	
-		v1.averiarse(averias);
+		v1.averiarse();
 	
 		
 		taller.ingresar(v1);
