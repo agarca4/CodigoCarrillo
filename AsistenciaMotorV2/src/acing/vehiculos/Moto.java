@@ -1,4 +1,4 @@
-package com.acing.back;
+package acing.vehiculos;
 
 public class Moto extends VehiculoConRuedas {
 
@@ -21,7 +21,7 @@ public class Moto extends VehiculoConRuedas {
 
 	@Override
 	public String toString() {
-		return "Moto: " + super.toString() + " con " + getNumeroDeRuedas() + " ruedas";
+		return "Moto: " + super.toString() + " con " + getNumeroDeRuedas() + " ruedas\n";
 	}
 
 	

@@ -1,4 +1,4 @@
-package com.acing.back;
+package acing.vehiculos;
 
 public abstract class VehiculoConRuedas extends Vehiculo {
 
