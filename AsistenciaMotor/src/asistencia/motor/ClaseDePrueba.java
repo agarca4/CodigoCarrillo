@@ -1,5 +1,7 @@
 package asistencia.motor;
 
+import com.acing.back.Vehiculo;
+
 public class ClaseDePrueba {
 
 	public static void main(String[] args) {

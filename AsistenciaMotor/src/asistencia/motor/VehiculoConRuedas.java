@@ -1,5 +1,7 @@
 package asistencia.motor;
 
+import com.acing.back.Vehiculo;
+
 public abstract class VehiculoConRuedas extends Vehiculo {
 
 	public VehiculoConRuedas() {
