@@ -1,20 +1,22 @@
 package acing.taller.vehiculos;
 
-public class AveriaVehiculosImpl {
+import acing.comun.Averia;
+
+public class AveriaVehiculosImpl implements Averia<AveriaVehiculosImpl>{
 
 	private String nombreAveriaVehiculos;
 	private int numeroHoras;
 	private int numeroPiezas;
 
-	protected String getNombreAveriaVehiculos() {
+	public String getNombre() {
 		return nombreAveriaVehiculos;
 	}
 
-	protected int getNumeroHoras() {
+	public int getNumeroHoras() {
 		return numeroHoras;
 	}
 
-	protected int getNumeroPiezas() {
+	public int getNumeroPiezas() {
 		return numeroPiezas;
 	}
 
@@ -27,8 +29,9 @@ public class AveriaVehiculosImpl {
 
 	@Override
 	public String toString() {
-		return  getNombreAveriaVehiculos() + ", necesita " + getNumeroHoras()
+		return  getNombre() + ", necesita " + getNumeroHoras()
 				+ " horas para ser reparada y " + getNumeroPiezas() + " piezas.\n";
 	}
+
 
 }

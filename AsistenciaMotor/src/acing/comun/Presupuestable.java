@@ -1,6 +1,5 @@
 package acing.comun;
 
-import acing.vehiculos.Vehiculo;
 
 public interface Presupuestable<T>{
 	

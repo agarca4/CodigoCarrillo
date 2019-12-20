@@ -3,11 +3,12 @@ package acing.taller.vehiculos;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import acing.comun.Averia;
 import acing.comun.Averiable;
 import acing.comun.Taller;
 import acing.vehiculos.Vehiculo;
 
-public class TallerVehiculosImpl implements Taller<Averiable<Vehiculo>> {
+public class TallerVehiculosImpl implements Taller<Averiable<Vehiculo, Averia<AveriaVehiculosImpl>>> {
 
 	private Collection<Vehiculo> vehiculosIngresados;
 
@@ -20,13 +21,13 @@ public class TallerVehiculosImpl implements Taller<Averiable<Vehiculo>> {
 	}
 
 	@Override
-	public void ingresar(Averiable<Vehiculo> vehiculo) {
+	public void ingresar(Averiable<Vehiculo, Averia<AveriaVehiculosImpl>> vehiculo) {
 		vehiculosIngresados.add((Vehiculo) vehiculo);
 
 	}
 
 	@Override
-	public void diagnosticar(Averiable<Vehiculo> vehiculo) {
+	public void diagnosticar(Averiable<Vehiculo, Averia<AveriaVehiculosImpl>> vehiculo) {
 		if (((Vehiculo) vehiculo).getAverias() == null) {
 			System.out.println(vehiculo + " no está averiado.\n");
 		} else {
@@ -37,7 +38,7 @@ public class TallerVehiculosImpl implements Taller<Averiable<Vehiculo>> {
 	}
 
 	@Override
-	public void reparar(Averiable<Vehiculo> vehiculo) {
+	public void reparar(Averiable<Vehiculo, Averia<AveriaVehiculosImpl>> vehiculo) {
 		if (((Vehiculo) vehiculo).getAverias() != null) {
 			((Vehiculo) vehiculo).setAverias(null);
 			System.out.println(vehiculo + " ha sido reparado.\n");
@@ -48,7 +49,7 @@ public class TallerVehiculosImpl implements Taller<Averiable<Vehiculo>> {
 	}
 
 	@Override
-	public void egresar(Averiable<Vehiculo> vehiculo) {
+	public void egresar(Averiable<Vehiculo, Averia<AveriaVehiculosImpl>> vehiculo) {
 		if (getVehiculosIngresados().contains(vehiculo)) {
 			getVehiculosIngresados().remove(vehiculo);
 		}
