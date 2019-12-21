@@ -1,12 +1,7 @@
 package acing.comun;
 
+public interface Averiable<T> {
 
-public interface  Averiable<T> {
-	
-	 void averiarse(Object averias);
-
-	
-
-
+	void averiarse(Object averias);
 
 }

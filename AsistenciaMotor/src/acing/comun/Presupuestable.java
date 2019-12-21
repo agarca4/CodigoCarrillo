@@ -1,10 +1,7 @@
 package acing.comun;
 
+public interface Presupuestable<T> {
 
-public interface Presupuestable<T>{
-	
-	 double calcularPresupuesto(T Objeto);
-
-	
+	double calcularPresupuesto(T Objeto);
 
 }

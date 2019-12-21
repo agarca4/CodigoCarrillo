@@ -3,7 +3,6 @@ package acing.taller.vehiculos;
 import acing.comun.Averia;
 import acing.comun.Averiable;
 import acing.comun.Presupuestable;
-import acing.vehiculos.Vehiculo;
 
 public class PresupuestoImpl implements Presupuestable<Averiable<VehiculoIngresadoImpl>> {
 
@@ -31,7 +30,7 @@ public class PresupuestoImpl implements Presupuestable<Averiable<VehiculoIngresa
 				precioPorPiezasUsadas += averia.getNumeroPiezas() * PRECIO_PIEZA;
 			}
 			setPrecioTotal(precioPorPiezasUsadas + precioPorHorasTrabajadas);
-			System.err.println("El presupuesto para reparar su vehiculo es " + getPrecioTotal() + "€ \n");
+			System.err.println("PRESUPUESTO: " + getPrecioTotal() + "€ \n");
 		} else {
 			setPrecioTotal(0.0);
 			System.out.println("Su vehiculo no necesita ser presupuestado\n");

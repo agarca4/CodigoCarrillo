@@ -1,11 +1,9 @@
 package acing.taller.vehiculos;
 
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-
 import acing.comun.Averia;
 import acing.comun.Averiable;
 import acing.comun.Taller;
@@ -23,16 +21,17 @@ public class TallerImpl implements Taller<Averiable<VehiculoIngresadoImpl>> {
 	}
 
 	@Override
-	public void ingresar(Averiable<VehiculoIngresadoImpl> vehiculo, String fechaIngreso) {
+	public void ingresar(Averiable<VehiculoIngresadoImpl> vehiculo, Date fechaIngreso) {
 		getVehiculosIngresados().add((VehiculoIngresadoImpl) vehiculo);
 		((VehiculoIngresadoImpl) vehiculo).setFechaIngreso(fechaIngreso);
+		System.out.println("Su vehiculo ha sido ingresado con fecha " + fechaIngreso + "\n");
 
 	}
 
 	@Override
 	public void diagnosticar(Averiable<VehiculoIngresadoImpl> vehiculo) {
 		if (((VehiculoIngresadoImpl) vehiculo).getAverias() == null) {
-			System.out.println(vehiculo + " no está averiado.\n");
+			System.out.println("DIAGNÓSTICO: " + vehiculo + " no está averiado.\n");
 			getVehiculosIngresados().remove(vehiculo);
 
 		} else {
@@ -41,7 +40,7 @@ public class TallerImpl implements Taller<Averiable<VehiculoIngresadoImpl>> {
 				horasTotalesReparacion += averia.getNumeroHoras();
 			}
 			((VehiculoIngresadoImpl) vehiculo).setTiempoReparación(horasTotalesReparacion);
-			System.err.println(vehiculo + " Tiene las siguientes averias: \n"
+			System.err.println("DIAGNÓSTICO: " + vehiculo + " Tiene las siguientes averias: \n"
 					+ ((VehiculoIngresadoImpl) vehiculo).getAverias() + "\n");
 		}
 	}
@@ -50,32 +49,29 @@ public class TallerImpl implements Taller<Averiable<VehiculoIngresadoImpl>> {
 		((VehiculoIngresadoImpl) vehiculo).setPiezasDisponibles(hayPiezas);
 	}
 
-
-
 	@Override
-	public void reparar(Averiable<VehiculoIngresadoImpl> vehiculo) {
+	public void reparar(Averiable<VehiculoIngresadoImpl> vehiculo, Date fechaReparacion) {
 		if (((VehiculoIngresadoImpl) vehiculo).getAverias() != null) {
 			((VehiculoIngresadoImpl) vehiculo).setAverias(null);
-			System.out.println("Su vehiculo ha sido reparado.\n");
+			System.out.println("Su vehiculo ha sido reparado con fecha " + fechaReparacion + "\n");
 		} else {
 			System.out.println("Su vehiculo no necesita ser reparado.\n");
 		}
-
-	}
-
-	@Override
-	public void egresar(Averiable<VehiculoIngresadoImpl> vehiculo, String fechaEgreso) {
 		if (getVehiculosIngresados().contains(vehiculo)) {
 			getVehiculosIngresados().remove(vehiculo);
-			((VehiculoIngresadoImpl)vehiculo).setFechaEgreso(fechaEgreso);
+			((VehiculoIngresadoImpl) vehiculo).setFechaEgreso(fechaReparacion);
 		}
 
 	}
+
+
+	
 
 	@Override
 	public String toString() {
 		return "Los vehiculos ingresados en el taller son: \n" + getVehiculosIngresados() + "\n";
 	}
+
 
 
 }
