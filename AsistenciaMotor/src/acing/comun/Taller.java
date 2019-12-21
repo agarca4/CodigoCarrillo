@@ -9,13 +9,13 @@ import acing.taller.vehiculos.VehiculoIngresadoImpl;
 
 public interface Taller<T> {
 	
-	void ingresar(T Objeto, Date fechaIngreso);
+	void ingresar(T Objeto, String fechaIngreso);
 	
 	void diagnosticar(T Objeto);
 	
 	void reparar(T Objeto);
 	
-	void egresar(T Objeto, Date fechaEgreso);
+	void egresar(T Objeto, String fechaEgreso);
 
 
 	

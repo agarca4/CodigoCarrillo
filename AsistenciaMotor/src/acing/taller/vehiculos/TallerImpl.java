@@ -23,7 +23,7 @@ public class TallerImpl implements Taller<Averiable<VehiculoIngresadoImpl>> {
 	}
 
 	@Override
-	public void ingresar(Averiable<VehiculoIngresadoImpl> vehiculo, Date fechaIngreso) {
+	public void ingresar(Averiable<VehiculoIngresadoImpl> vehiculo, String fechaIngreso) {
 		getVehiculosIngresados().add((VehiculoIngresadoImpl) vehiculo);
 		((VehiculoIngresadoImpl) vehiculo).setFechaIngreso(fechaIngreso);
 
@@ -64,7 +64,7 @@ public class TallerImpl implements Taller<Averiable<VehiculoIngresadoImpl>> {
 	}
 
 	@Override
-	public void egresar(Averiable<VehiculoIngresadoImpl> vehiculo, Date fechaEgreso) {
+	public void egresar(Averiable<VehiculoIngresadoImpl> vehiculo, String fechaEgreso) {
 		if (getVehiculosIngresados().contains(vehiculo)) {
 			getVehiculosIngresados().remove(vehiculo);
 			((VehiculoIngresadoImpl)vehiculo).setFechaEgreso(fechaEgreso);

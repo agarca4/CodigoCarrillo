@@ -13,28 +13,28 @@ import acing.vehiculos.Vehiculo;
 public class VehiculoIngresadoImpl extends Vehiculo implements Averiable<VehiculoIngresadoImpl> {
 
 	private Collection<AveriaImpl> averias;
-	private Date fechaIngreso;
-	private Date fechaEgreso;
+	private String fechaIngreso;
+	private String fechaEgreso;
 	private boolean piezasDisponibles;
 	private int tiempoReparación;
 
-	public Date getFechaEgreso() {
+	public String getFechaEgreso() {
 		return fechaEgreso;
 	}
 
-	public void setFechaEgreso(Date fechaEgreso) {
+	public void setFechaEgreso(String fechaEgreso) {
 		this.fechaEgreso = fechaEgreso;
 	}
 
-	protected Date getFechaIngreso() {
+	public String getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	protected void setFechaIngreso(Date fechaIngreso) {
+	public void setFechaIngreso(String fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	protected boolean isPiezasDisponibles() {
+	public boolean isPiezasDisponibles() {
 		return piezasDisponibles;
 	}
 
