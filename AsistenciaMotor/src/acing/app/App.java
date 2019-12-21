@@ -1,56 +1,71 @@
 package acing.app;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
-
+import java.util.Date;
 import acing.comun.Averia;
 import acing.comun.Averiable;
-import acing.taller.vehiculos.AveriaVehiculosImpl;
-import acing.taller.vehiculos.PresupuestoVehiculosImpl;
-import acing.taller.vehiculos.TallerVehiculosImpl;
-import acing.vehiculos.Coche;
-import acing.vehiculos.Moto;
-import acing.vehiculos.Vehiculo;
+import acing.taller.vehiculos.AveriaImpl;
+import acing.taller.vehiculos.PresupuestoImpl;
+import acing.taller.vehiculos.TallerImpl;
+import acing.taller.vehiculos.TurnoImpl;
+import acing.taller.vehiculos.VehiculoIngresadoImpl;
+
 
 public class App {
 
 	public static void main(String[] args) {
 
-		Averiable<Vehiculo, Averia<AveriaVehiculosImpl>> v1 = new Vehiculo("audi", "blanco");
-		Averiable<Vehiculo, Averia<AveriaVehiculosImpl>> c1 = new Coche("seat", "azul", "7575ljk");
-		Averiable<Vehiculo, Averia<AveriaVehiculosImpl>> m1 = new Moto("yamaha", "roja");
+		TallerImpl taller = new TallerImpl();
 
-		TallerVehiculosImpl taller = new TallerVehiculosImpl();
+		Averiable<VehiculoIngresadoImpl> vehiculo1 = new VehiculoIngresadoImpl("audi a3", "blanco");
+		Averiable<VehiculoIngresadoImpl> vehiculo2 = new VehiculoIngresadoImpl("seat ibiza", "rojo");
 
-		AveriaVehiculosImpl av1 = new AveriaVehiculosImpl("motor", 5, 4);
-		AveriaVehiculosImpl av2 = new AveriaVehiculosImpl("direccion", 3, 10);
+		Calendar.getInstance().set(2112, 11, 4);
+		taller.ingresar(vehiculo1, new Date());
+		taller.ingresar(vehiculo2, new Date());
 
-		Collection<Averia<AveriaVehiculosImpl>> averias = new ArrayList<Averia<AveriaVehiculosImpl>>();
-		averias.add(av1);
-		averias.add(av2);
+		Averia<AveriaImpl> averia1 = new AveriaImpl("motor", 5, 4);
+		Averia<AveriaImpl> averia2 = new AveriaImpl("direccion", 3, 10);
+		Averia<AveriaImpl> averia3 = new AveriaImpl("No arranca", 6, 3);
 
-		v1.averiarse(averias);
+		Collection<AveriaImpl> averiasVehiculo1 = new ArrayList<AveriaImpl>();
+		averiasVehiculo1.add((AveriaImpl) averia1);
+		averiasVehiculo1.add((AveriaImpl) averia2);
 
-		taller.ingresar(v1);
-		taller.ingresar(c1);
+		Collection<AveriaImpl> averiasVehiculo2 = new ArrayList<AveriaImpl>();
+		averiasVehiculo2.add((AveriaImpl) averia3);
+
+		vehiculo1.averiarse(averiasVehiculo1);
+		vehiculo2.averiarse(averiasVehiculo2);
+
+		taller.diagnosticar(vehiculo1);
+		taller.diagnosticar(vehiculo2);
+
+		taller.comprobarPiezasDisponibles(vehiculo1, true);
+		taller.comprobarPiezasDisponibles(vehiculo2, true);
+
+		PresupuestoImpl presupuesto1 = new PresupuestoImpl();
+		PresupuestoImpl presupuesto2 = new PresupuestoImpl();
+
+		presupuesto1.calcularPresupuesto(vehiculo1);
+		presupuesto2.calcularPresupuesto(vehiculo2);
+
+		TurnoImpl turno = new TurnoImpl();
 
 		System.out.println(taller);
+		turno.ordenarParaTurno(taller.getVehiculosIngresados());
+		System.out.println("Vehiculos ordenados para asignarles turno " + taller);
 
-		taller.diagnosticar(v1);
-		taller.diagnosticar(c1);
-
-		PresupuestoVehiculosImpl presupuesto1 = new PresupuestoVehiculosImpl();
-		presupuesto1.calcularPresupuesto(v1);
-		presupuesto1.calcularPresupuesto(c1);
-
-		taller.reparar(v1);
-		taller.reparar(c1);
-
-		taller.egresar(v1);
-		taller.egresar(c1);
-		taller.egresar(m1);
-
-		System.out.println(taller);
+//		taller.reparar(vehiculo1);
+//		taller.reparar(vehiculo2);
+//
+//		taller.egresar(vehiculo1);
+//		taller.egresar(vehiculo2);
+//
+//		System.out.println(taller);
 
 	}
 

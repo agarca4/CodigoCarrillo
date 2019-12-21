@@ -1,14 +1,23 @@
 package acing.comun;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import acing.taller.vehiculos.VehiculoIngresadoImpl;
+
+
 public interface Taller<T> {
 	
-	void ingresar(T Objeto);
+	void ingresar(T Objeto, Date fechaIngreso);
 	
 	void diagnosticar(T Objeto);
 	
 	void reparar(T Objeto);
 	
-	void egresar(T Objeto);
+	void egresar(T Objeto, Date fechaEgreso);
+
+
 	
 
 	

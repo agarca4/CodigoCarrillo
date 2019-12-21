@@ -8,9 +8,5 @@ public interface Averia<T> {
 	
 	int getNumeroHoras();
 	
-	
-	
-	
-	
 
 }

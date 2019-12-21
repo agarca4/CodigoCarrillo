@@ -1,23 +1,11 @@
 package acing.vehiculos;
 
-import java.util.Collection;
-import acing.comun.Averia;
-import acing.comun.Averiable;
-import acing.taller.vehiculos.AveriaVehiculosImpl;
 
-public class Vehiculo implements Averiable<Vehiculo, Averia<AveriaVehiculosImpl>> {
+public class Vehiculo{
 
 	protected String modelo;
 	private String color;
-	protected Collection<Averia<AveriaVehiculosImpl>> averias;
-
-	public Collection<Averia<AveriaVehiculosImpl>> getAverias() {
-		return averias;
-	}
-
-	public void setAverias(Collection<Averia<AveriaVehiculosImpl>> averias) {
-		this.averias = averias;
-	}
+	
 
 	public Vehiculo() {
 	}
@@ -43,10 +31,7 @@ public class Vehiculo implements Averiable<Vehiculo, Averia<AveriaVehiculosImpl>
 		this.modelo = modelo;
 	}
 
-	@Override
-	public void averiarse(Collection<Averia<AveriaVehiculosImpl>> averias) {
-		setAverias(averias);
-	}
+	
 
 	@Override
 	public String toString() {

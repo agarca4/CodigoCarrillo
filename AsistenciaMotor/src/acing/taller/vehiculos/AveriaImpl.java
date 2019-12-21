@@ -2,7 +2,7 @@ package acing.taller.vehiculos;
 
 import acing.comun.Averia;
 
-public class AveriaVehiculosImpl implements Averia<AveriaVehiculosImpl>{
+public class AveriaImpl implements Averia<AveriaImpl>{
 
 	private String nombreAveriaVehiculos;
 	private int numeroHoras;
@@ -20,7 +20,7 @@ public class AveriaVehiculosImpl implements Averia<AveriaVehiculosImpl>{
 		return numeroPiezas;
 	}
 
-	public AveriaVehiculosImpl(String nombreAveriaVehiculos, int numeroHoras, int numeroPiezas) {
+	public AveriaImpl(String nombreAveriaVehiculos, int numeroHoras, int numeroPiezas) {
 		super();
 		this.nombreAveriaVehiculos = nombreAveriaVehiculos;
 		this.numeroHoras = numeroHoras;
@@ -30,7 +30,7 @@ public class AveriaVehiculosImpl implements Averia<AveriaVehiculosImpl>{
 	@Override
 	public String toString() {
 		return  getNombre() + ", necesita " + getNumeroHoras()
-				+ " horas para ser reparada y " + getNumeroPiezas() + " piezas.\n";
+				+ " horas para ser reparada y " + getNumeroPiezas() + " piezas";
 	}
 
 
