@@ -24,6 +24,4 @@ public class ProductoExternoImpl extends Product3rdParty implements Comerciable 
 		return "PRODUCTO EXTERNO: " + getDescripcion();
 	}
 
-	
-
 }

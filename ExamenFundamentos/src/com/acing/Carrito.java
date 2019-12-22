@@ -37,7 +37,7 @@ public class Carrito {
 		for (Comerciable comerciable : getProductosEnCarrito()) {
 			informe += comerciable.toString() + " " + comerciable.getPrecio() + "€\n";
 		}
-		informe = informe + "\tPrecio total del carrito " + this.getValorCarrito() + " €";
+		informe = informe + "\tPrecio total del carrito " + this.getValorCarrito() + " €\n";
 		System.out.println(informe);
 		return informe;
 
