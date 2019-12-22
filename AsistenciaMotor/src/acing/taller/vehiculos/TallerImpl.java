@@ -8,7 +8,7 @@ import acing.comun.Averia;
 import acing.comun.Averiable;
 import acing.comun.Taller;
 
-public class TallerImpl implements Taller<Averiable<VehiculoIngresadoImpl>> {
+public class TallerImpl<T extends Averiable<VehiculoIngresadoImpl>>implements Taller<Averiable<VehiculoIngresadoImpl>> {
 
 	private Collection<VehiculoIngresadoImpl> vehiculosIngresados = new ArrayList<VehiculoIngresadoImpl>();
 
