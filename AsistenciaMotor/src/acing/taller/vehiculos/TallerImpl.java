@@ -12,86 +12,76 @@ public class TallerImpl implements Taller {
 	public static final int PRECIO_HORA = 50;
 	public static final int PRECIO_PIEZA = 10;
 
-	private double precioTotal;
+	private Collection<Averiable> vehiculosIngresados = new ArrayList<>();
 
-	protected double getPrecioTotal() {
-		return precioTotal;
-	}
-
-	protected void setPrecioTotal(double precioTotal) {
-		this.precioTotal = precioTotal;
-	}
-
-	private Collection<VehiculoIngresadoImpl> vehiculosIngresados = new ArrayList<>();
-
-	public Collection<VehiculoIngresadoImpl> getVehiculosIngresados() {
+	public Collection<Averiable> getVehiculosIngresados() {
 		return vehiculosIngresados;
 	}
 
-	protected void setVehiculosIngresados(Collection<VehiculoIngresadoImpl> vehiculosIngresados) {
+	protected void setVehiculosIngresados(Collection<Averiable> vehiculosIngresados) {
 		this.vehiculosIngresados = vehiculosIngresados;
 	}
 
 	@Override
 	public <T extends Averiable> void ingresar(T vehiculo, Date fechaIngreso) {
-		getVehiculosIngresados().add((VehiculoIngresadoImpl) vehiculo);
-		((VehiculoIngresadoImpl) vehiculo).setFechaIngreso(fechaIngreso);
+		getVehiculosIngresados().add(vehiculo);
+		vehiculo.setFechaIngreso(fechaIngreso);
 		System.out.println("Su vehiculo ha sido ingresado con fecha " + fechaIngreso + "\n");
 
 	}
 
 	@Override
 	public <T extends Averiable> void diagnosticar(T vehiculo) {
-		if (((VehiculoIngresadoImpl) vehiculo).getAverias() == null) {
+		if (vehiculo.getAverias() == null) {
 			System.out.println("DIAGNÓSTICO: " + vehiculo + " no está averiado.\n");
 			getVehiculosIngresados().remove(vehiculo);
 
 		} else {
 			int horasTotalesReparacion = 0;
-			for (Averia averia : (((VehiculoIngresadoImpl) vehiculo).getAverias())) {
+			for (Averia averia : vehiculo.getAverias()) {
 				horasTotalesReparacion += averia.getNumeroHoras();
 			}
-			((VehiculoIngresadoImpl) vehiculo).setTiempoReparación(horasTotalesReparacion);
-			System.err.println("DIAGNÓSTICO: " + vehiculo + " Tiene las siguientes averias: \n"
-					+ ((VehiculoIngresadoImpl) vehiculo).getAverias() + "\n");
+			vehiculo.setTiempoReparación(horasTotalesReparacion);
+			System.err.println(
+					"DIAGNÓSTICO: " + vehiculo + " Tiene las siguientes averias: \n" + vehiculo.getAverias() + "\n");
 		}
 	}
 
 	@Override
-	public double calcularPresupuesto(Averiable Objeto) {
-		if (((VehiculoIngresadoImpl) Objeto).getAverias() != null) {
+	public <T extends Averiable> double calcularPresupuesto(T vehiculo) {
+		if (vehiculo.getAverias() != null) {
 			double precioPorHorasTrabajadas = 0;
 			double precioPorPiezasUsadas = 0;
 
-			for (Averia averia : ((VehiculoIngresadoImpl) Objeto).getAverias()) {
+			for (Averia averia : vehiculo.getAverias()) {
 				precioPorHorasTrabajadas += averia.getNumeroHoras() * PRECIO_HORA;
 				precioPorPiezasUsadas += averia.getNumeroPiezas() * PRECIO_PIEZA;
 			}
-			setPrecioTotal(precioPorPiezasUsadas + precioPorHorasTrabajadas);
-			System.err.println("PRESUPUESTO: " + getPrecioTotal() + "€ \n");
+			vehiculo.setPresupuesto(precioPorPiezasUsadas + precioPorHorasTrabajadas);
+			System.out.println("PRESUPUESTO: " + vehiculo.getPresupuesto() + "€ \n");
 		} else {
-			setPrecioTotal(0.0);
+			vehiculo.setPresupuesto(0.0);
 			System.out.println("Su vehiculo no necesita ser presupuestado\n");
 		}
 
-		return getPrecioTotal();
+		return vehiculo.getPresupuesto();
 	}
 
 	public <T extends Averiable> void comprobarPiezasDisponibles(T vehiculo, boolean hayPiezas) {
-		((VehiculoIngresadoImpl) vehiculo).setPiezasDisponibles(hayPiezas);
+		vehiculo.setPiezasDisponibles(hayPiezas);
 	}
 
 	@Override
 	public <T extends Averiable> void reparar(T vehiculo, Date fechaReparacion) {
-		if (((VehiculoIngresadoImpl) vehiculo).getAverias() != null) {
-			((VehiculoIngresadoImpl) vehiculo).setAverias(null);
+		if (vehiculo.getAverias() != null) {
+			vehiculo.averiarse(null);
 			System.out.println("Su vehiculo ha sido reparado con fecha " + fechaReparacion + "\n");
 		} else {
 			System.out.println("Su vehiculo no necesita ser reparado.\n");
 		}
 		if (getVehiculosIngresados().contains(vehiculo)) {
 			getVehiculosIngresados().remove(vehiculo);
-			((VehiculoIngresadoImpl) vehiculo).setFechaEgreso(fechaReparacion);
+			vehiculo.setFechaEgreso(fechaReparacion);
 		}
 
 	}

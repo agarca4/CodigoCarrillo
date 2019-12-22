@@ -2,7 +2,7 @@ package acing.taller.vehiculos;
 
 import acing.comun.Averia;
 
-public class AveriaImpl<T extends Averia> implements Averia{
+public class AveriaImpl<T extends Averia> implements Averia {
 
 	private String nombreAveriaVehiculos;
 	private int numeroHoras;
@@ -29,9 +29,8 @@ public class AveriaImpl<T extends Averia> implements Averia{
 
 	@Override
 	public String toString() {
-		return  getNombre() + ", necesita " + getNumeroHoras()
-				+ " horas para ser reparada y " + getNumeroPiezas() + " piezas";
+		return getNombre() + ", necesita " + getNumeroHoras() + " horas para ser reparada y " + getNumeroPiezas()
+				+ " piezas";
 	}
-
 
 }

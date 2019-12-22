@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import acing.comun.Averia;
+import acing.comun.Averiable;
 import acing.taller.vehiculos.AveriaImpl;
 import acing.taller.vehiculos.TallerImpl;
 import acing.taller.vehiculos.Turno;
@@ -16,9 +17,9 @@ public class App {
 
 		TallerImpl taller = new TallerImpl();
 
-		VehiculoIngresadoImpl vehiculo1 = new VehiculoIngresadoImpl("audi a3", "blanco");
-		VehiculoIngresadoImpl vehiculo2 = new VehiculoIngresadoImpl("seat ibiza", "rojo");
-		VehiculoIngresadoImpl vehiculo3 = new VehiculoIngresadoImpl("mercedes slk", "negro");
+		Averiable vehiculo1 = new VehiculoIngresadoImpl<Averiable>("audi a3", "blanco");
+		Averiable vehiculo2 = new VehiculoIngresadoImpl<Averiable>("seat ibiza", "rojo");
+		Averiable vehiculo3 = new VehiculoIngresadoImpl<Averiable>("mercedes slk", "negro");
 
 		taller.ingresar(vehiculo1, Calendar.getInstance().getTime());
 		taller.ingresar(vehiculo2, Calendar.getInstance().getTime());
@@ -56,7 +57,7 @@ public class App {
 		taller.calcularPresupuesto(vehiculo3);
 
 		System.out.println(taller);
-		Turno.ordenarVehiculosIngresados((List<VehiculoIngresadoImpl>) taller.getVehiculosIngresados());
+		Turno.ordenarVehiculosIngresados((List<Averiable>) taller.getVehiculosIngresados());
 		System.out.println("Ya ordenados: " + taller);
 
 		taller.reparar(vehiculo2, Calendar.getInstance().getTime());

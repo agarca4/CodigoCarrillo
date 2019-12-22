@@ -4,16 +4,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import acing.comun.Averiable;
+
 public class Turno {
 
-	public static void ordenarVehiculosIngresados(List<VehiculoIngresadoImpl> vehiculosIngresados) {
+	public static void ordenarVehiculosIngresados(List<Averiable> vehiculosIngresados) {
 		Collections.sort(vehiculosIngresados, Turno.COMPARADOR);
 	}
 
-	public static final Comparator<VehiculoIngresadoImpl> COMPARADOR = new Comparator<VehiculoIngresadoImpl>() {
+	public static final Comparator<Averiable> COMPARADOR = new Comparator<Averiable>() {
 
 		@Override
-		public int compare(VehiculoIngresadoImpl o1, VehiculoIngresadoImpl o2) {
+		public int compare(Averiable o1, Averiable o2) {
 
 			int valorComparacion = -Boolean.compare(o1.isPiezasDisponibles(), o2.isPiezasDisponibles());
 
@@ -29,10 +31,9 @@ public class Turno {
 
 	};
 
-	static Comparator<VehiculoIngresadoImpl> COMPARADOR_FECHA = (o1, o2) -> o1.getFechaIngreso()
-			.compareTo(o2.getFechaIngreso());
+	static Comparator<Averiable> COMPARADOR_FECHA = (o1, o2) -> o1.getFechaIngreso().compareTo(o2.getFechaIngreso());
 
-	static Comparator<VehiculoIngresadoImpl> COMPARADOR_TIEMPO_REPARACION = (o1, o2) -> Integer
-			.compare(o1.getTiempoReparación(), o2.getTiempoReparación());
+	static Comparator<Averiable> COMPARADOR_TIEMPO_REPARACION = (o1, o2) -> Integer.compare(o1.getTiempoReparación(),
+			o2.getTiempoReparación());
 
 }
