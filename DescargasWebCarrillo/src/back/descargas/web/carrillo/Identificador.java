@@ -1,6 +1,6 @@
 package back.descargas.web.carrillo;
 
-public class Identificador {
+public class Identificador<T extends Identificable> {
 	
 	private int identificador;
 

@@ -1,6 +1,6 @@
 package com.acing;
 
-public interface Identificable {
+public interface Identificable{
 
 	int getId();
 

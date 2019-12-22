@@ -1,6 +1,6 @@
 package acing.comun;
 
-public interface Averia<T> {
+public interface Averia {
 
 	String getNombre();
 

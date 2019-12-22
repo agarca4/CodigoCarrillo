@@ -2,13 +2,13 @@ package acing.taller.vehiculos;
 
 import java.util.Collection;
 import java.util.Date;
-
+import acing.comun.Averia;
 import acing.comun.Averiable;
 import acing.vehiculos.Vehiculo;
 
-public class VehiculoIngresadoImpl extends Vehiculo implements Averiable<VehiculoIngresadoImpl> {
+public class VehiculoIngresadoImpl extends Vehiculo implements Averiable {
 
-	private Collection<AveriaImpl> averias;
+	private Collection<Averia> averias;
 	private Date fechaIngreso;
 	private Date fechaEgreso;
 	private boolean piezasDisponibles;
@@ -46,11 +46,11 @@ public class VehiculoIngresadoImpl extends Vehiculo implements Averiable<Vehicul
 		return tiempoReparación;
 	}
 
-	public Collection<AveriaImpl> getAverias() {
+	protected Collection<Averia> getAverias() {
 		return averias;
 	}
 
-	public void setAverias(Collection<AveriaImpl> averias) {
+	protected void setAverias(Collection<Averia> averias) {
 		this.averias = averias;
 	}
 
@@ -59,8 +59,8 @@ public class VehiculoIngresadoImpl extends Vehiculo implements Averiable<Vehicul
 	}
 
 	@Override
-	public void averiarse(Object averias) {
-		setAverias((Collection<AveriaImpl>) averias);
+	public void averiarse(Collection<Averia> averias) {
+		setAverias(averias);
 	}
 
 	@Override
@@ -68,4 +68,5 @@ public class VehiculoIngresadoImpl extends Vehiculo implements Averiable<Vehicul
 		return super.toString() + " ,ingresado el " + getFechaIngreso() + ", ¿Piezas disponibles? "
 				+ isPiezasDisponibles() + " ,necesita para ser reparado: " + getTiempoReparación() + " horas.\n";
 	}
+
 }

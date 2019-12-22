@@ -53,4 +53,6 @@ public class ProductoImpl implements Comerciable, Identificable {
 		return getDescripcion() + " - " + getMarca();
 	}
 
+
+
 }

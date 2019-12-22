@@ -1,7 +1,11 @@
 package acing.comun;
 
-public interface Averiable<T> {
+import java.util.Collection;
 
-	void averiarse(Object averias);
+
+public interface Averiable {
+
+	 void averiarse(Collection <Averia> averias);
+
 
 }

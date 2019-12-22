@@ -2,7 +2,7 @@ package acing.taller.vehiculos;
 
 import acing.comun.Averia;
 
-public class AveriaImpl implements Averia<AveriaImpl>{
+public class AveriaImpl<T extends Averia> implements Averia{
 
 	private String nombreAveriaVehiculos;
 	private int numeroHoras;
