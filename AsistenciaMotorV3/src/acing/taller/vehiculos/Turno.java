@@ -9,7 +9,14 @@ import acing.comun.Averiable;
 public class Turno {
 
 	public static void ordenarVehiculosIngresados(List<VehiculoIngresadoImpl> vehiculosIngresados) {
+		
 		Collections.sort(vehiculosIngresados, Turno.COMPARADOR);
+		//se puede usar tabien el metodo NO estatico: 
+		//vehiculosIngresados.sort(COMPARADOR);
+		//Tambien existe este:
+		//vehiculosIngresados.sort(Collections.reverseOrder(COMPARADOR));
+		
+		
 	}
 
 	public static final Comparator<VehiculoIngresadoImpl> COMPARADOR = new Comparator<VehiculoIngresadoImpl>() {

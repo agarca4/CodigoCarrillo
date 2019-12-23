@@ -29,8 +29,8 @@ public class AveriaImpl implements Averia<AveriaImpl> {
 
 	@Override
 	public String toString() {
-		return getNombre() + ", necesita " + getNumeroHoras() + " horas para ser reparada y " + getNumeroPiezas()
-				+ " piezas";
+		return getNombre().toUpperCase() + ": necesita " + getNumeroHoras() + " horas para ser reparada y "
+				+ getNumeroPiezas() + " piezas";
 	}
 
 }

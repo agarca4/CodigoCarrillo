@@ -81,7 +81,7 @@ public class VehiculoIngresadoImpl extends Vehiculo implements Averiable<Vehicul
 
 	@Override
 	public String toString() {
-		return super.toString() + " ,ingresado el " + getFechaIngreso() + ", ¿Piezas disponibles? "
+		return super.toString() + " ,ingresado el " + getFechaIngreso() + ",\n ¿Piezas disponibles? "
 				+ isPiezasDisponibles() + " ,necesita para ser reparado: " + getTiempoReparación() + " horas.\n";
 	}
 

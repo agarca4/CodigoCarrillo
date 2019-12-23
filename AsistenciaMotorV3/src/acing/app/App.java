@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
-import acing.comun.Averia;
-import acing.comun.Averiable;
 import acing.taller.vehiculos.AveriaImpl;
 import acing.taller.vehiculos.TallerImpl;
 import acing.taller.vehiculos.Turno;
@@ -61,6 +59,8 @@ public class App {
 		System.out.println("Ya ordenados: " + taller);
 
 		taller.reparar(vehiculo2, Calendar.getInstance().getTime());
+		
+		taller.comprobarGarantia(vehiculo2, Calendar.getInstance().getTime());
 
 		System.out.println(taller);
 

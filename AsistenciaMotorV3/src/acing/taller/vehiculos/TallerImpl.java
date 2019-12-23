@@ -1,16 +1,17 @@
 package acing.taller.vehiculos;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-import acing.comun.Averia;
-import acing.comun.Averiable;
+import java.util.GregorianCalendar;
 import acing.comun.Taller;
 
 public class TallerImpl implements Taller<VehiculoIngresadoImpl> {
 
 	public static final int PRECIO_HORA = 50;
 	public static final int PRECIO_PIEZA = 10;
+	public static final int ANIOS_GARANTIA = 1;
 
 	private Collection<VehiculoIngresadoImpl> vehiculosIngresados = new ArrayList<>();
 
@@ -23,7 +24,7 @@ public class TallerImpl implements Taller<VehiculoIngresadoImpl> {
 	}
 
 	@Override
-	public  void ingresar(VehiculoIngresadoImpl vehiculo, Date fechaIngreso) {
+	public void ingresar(VehiculoIngresadoImpl vehiculo, Date fechaIngreso) {
 		getVehiculosIngresados().add(vehiculo);
 		vehiculo.setFechaIngreso(fechaIngreso);
 		System.out.println("Su vehiculo ha sido ingresado con fecha " + fechaIngreso + "\n");
@@ -31,9 +32,10 @@ public class TallerImpl implements Taller<VehiculoIngresadoImpl> {
 	}
 
 	@Override
-	public  void diagnosticar(VehiculoIngresadoImpl vehiculo) {
+	public void diagnosticar(VehiculoIngresadoImpl vehiculo) {
 		if (vehiculo.getAverias() == null) {
-			System.out.println("DIAGNÓSTICO: " + vehiculo + " no está averiado.\n");
+			System.out.println("***************************************************\nDIAGNÓSTICO: " + vehiculo
+					+ " no está averiado.\n***************************************************\\n");
 			getVehiculosIngresados().remove(vehiculo);
 
 		} else {
@@ -42,8 +44,9 @@ public class TallerImpl implements Taller<VehiculoIngresadoImpl> {
 				horasTotalesReparacion += averia.getNumeroHoras();
 			}
 			vehiculo.setTiempoReparación(horasTotalesReparacion);
-			System.err.println(
-					"DIAGNÓSTICO: " + vehiculo + " Tiene las siguientes averias: \n" + vehiculo.getAverias() + "\n");
+			System.err.println("***************************************************\nDIAGNÓSTICO: " + vehiculo
+					+ " Tiene las siguientes averias: \n" + vehiculo.getAverias()
+					+ "\n***************************************************\n");
 		}
 	}
 
@@ -58,7 +61,7 @@ public class TallerImpl implements Taller<VehiculoIngresadoImpl> {
 				precioPorPiezasUsadas += averia.getNumeroPiezas() * PRECIO_PIEZA;
 			}
 			vehiculo.setPresupuesto(precioPorPiezasUsadas + precioPorHorasTrabajadas);
-			System.out.println("PRESUPUESTO: " + vehiculo.getPresupuesto() + "€ \n");
+			System.out.println("***** PRESUPUESTO: " + vehiculo.getPresupuesto() + "€ *****\n");
 		} else {
 			vehiculo.setPresupuesto(0.0);
 			System.out.println("Su vehiculo no necesita ser presupuestado\n");
@@ -72,7 +75,7 @@ public class TallerImpl implements Taller<VehiculoIngresadoImpl> {
 	}
 
 	@Override
-	public  void reparar(VehiculoIngresadoImpl vehiculo, Date fechaReparacion) {
+	public void reparar(VehiculoIngresadoImpl vehiculo, Date fechaReparacion) {
 		if (vehiculo.getAverias() != null) {
 			vehiculo.averiarse(null);
 			System.out.println("Su vehiculo ha sido reparado con fecha " + fechaReparacion + "\n");
@@ -84,6 +87,28 @@ public class TallerImpl implements Taller<VehiculoIngresadoImpl> {
 			vehiculo.setFechaEgreso(fechaReparacion);
 		}
 
+	}
+
+	public boolean comprobarGarantia(VehiculoIngresadoImpl vehiculo, Date fechaReIngreso) {
+
+		boolean isGarantiaVigor = false;
+
+		Calendar firstCal = GregorianCalendar.getInstance();
+		Calendar secondCal = GregorianCalendar.getInstance();
+
+		firstCal.setTime(vehiculo.getFechaEgreso());
+		secondCal.setTime(fechaReIngreso);
+
+		secondCal.add(Calendar.DAY_OF_YEAR, 1 - firstCal.get(Calendar.DAY_OF_YEAR));
+
+		if (secondCal.get(Calendar.YEAR) - firstCal.get(Calendar.YEAR) <= 1) {
+			isGarantiaVigor = true;
+			System.out.println("El vehiculo está en garantia.\n");
+		} else {
+			System.out.println("La garantia del vehiculo ha expirado.\n");
+		}
+
+		return isGarantiaVigor;
 	}
 
 	@Override

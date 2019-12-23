@@ -35,7 +35,7 @@ public class Vehiculo{
 
 	@Override
 	public String toString() {
-		return getModelo() + " de color " + getColor();
+		return getModelo().toUpperCase() + " de color " + getColor();
 	}
 
 }
